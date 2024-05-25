@@ -1,8 +1,7 @@
 // load env variables
-// if (process.env.NODE_ENV != 'production') {
-//     import('dotenv').then((dotenv) => dotenv.config());
-// }
-import('dotenv').then((dotenv) => dotenv.config());
+if (process.env.NODE_ENV != 'production') {
+    import('dotenv').then((dotenv) => dotenv.config());
+}
 
 // import dependencies
 // const express = require('express')
@@ -22,9 +21,8 @@ const app = express()
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
-    origin: ["https://mern-notes-frontend-tawny.vercel.app/"],
+    origin: true,
     credentials: true,
-    methods: ["GET", "PUT", "POST", "DELETE"],
 }))
 
 // Connect to db
@@ -43,8 +41,4 @@ app.put('/notes/:id', requireAuth, updateNote)
 app.delete('/notes/:id', requireAuth, deleteNote)
 
 //start the server
-app.listen(process.env.PORT || 3000)
-
-// "dev": "nodemon -r dotenv/config server.js",
-
-module.exports = app;  // Exporting for Vercel
+app.listen(process.env.PORT)
