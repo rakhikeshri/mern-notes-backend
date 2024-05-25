@@ -45,8 +45,6 @@ app.delete('/notes/:id', requireAuth, deleteNote)
 //start the server
 app.listen(process.env.PORT || 3000)
 
-
-
 // "dev": "nodemon -r dotenv/config server.js",
 
-module.exports = app;  // Export for Vercel
+module.exports = app;  // Exporting for Vercel
