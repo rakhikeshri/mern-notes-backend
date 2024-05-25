@@ -21,10 +21,9 @@ const app = express()
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
-    // origin: true,
-    origin: ['https://mern-notes-frontend-sk49.vercel.app/'],
+    origin: ["https://mern-notes-frontend-tawny.vercel.app/"],
     credentials: true,
-    methods:["GET","POST","PUT","DELETE"]
+    methods: ["GET", "PUT", "POST", "DELETE"],
 }))
 
 // Connect to db
@@ -44,3 +43,7 @@ app.delete('/notes/:id', requireAuth, deleteNote)
 
 //start the server
 app.listen(process.env.PORT)
+
+
+
+// "dev": "nodemon -r dotenv/config server.js",
